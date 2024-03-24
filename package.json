@@ -1,0 +1,23 @@
+{
+  "name": "sit725-2024-t1-prac3",
+  "version": "1.0.0",
+  "description": "sit 725 week 3 prac",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Nodejs",
+    "Express",
+    "Materialize",
+    "HTML",
+    "JS",
+    "CSS"
+  ],
+  "author": "Sumeet Kumar",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.1"
+  }
+}
