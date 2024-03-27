@@ -36,6 +36,15 @@ const addCards = (items) => {
     $("#card-section").append(itemToAppend)
   });
 }
+
+const getProjects = () => {
+  $.get('/api/projects', (response) => {
+    if (response.statusCode == 200) {
+      addCards(response.data);
+    }
+  });
+}
+
 $(document).ready(function () {
   // Initialize Materialize components
   $('.materialboxed').materialbox();
@@ -51,6 +60,6 @@ $(document).ready(function () {
     submitForm();
   });
 
-  // Add cards to the card section
-  addCards(cardList);
+  // Call getProjects function to fetch and display projects
+  getProjects();
 });
