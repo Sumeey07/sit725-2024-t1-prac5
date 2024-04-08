@@ -1,28 +1,29 @@
-const cardList = [
-  {
-    title: "Kitten 2",
-    image: "images/kitten-2.jpg",
-    link: "About Kitten 2",
-    desciption: "Demo desciption about kitten 2"
-  },
-  {
-    title: "Kitten 3",
-    image: "images/kitten-3.jpg",
-    link: "About Kitten 3",
-    desciption: "Demo desciption about kitten 3"
-  }
-]
 const clickMe = () => {
   alert("Thanks for clicking me. Hope you have a nice day!")
 }
 const submitForm = () => {
-  let formData = {};
-  formData.first_name = $('#first_name').val();
-  formData.last_name = $('#last_name').val();
-  formData.password = $('#password').val();
-  formData.email = $('#email').val();
-  console.log("Form Data Submitted: ", formData);
+  let formData = {
+    first_name: $('#first_name').val(),
+    last_name: $('#last_name').val(),
+    password: $('#password').val(),
+    email: $('#email').val()
+  };
+
+  // Make a POST request to insert the form data into MongoDB
+  $.ajax({
+    type: 'POST',
+    url: '/api/projects/insert',
+    contentType: 'application/json',
+    data: JSON.stringify(formData),
+    success: function(response) {
+      console.log('Data inserted successfully:', response);
+    },
+    error: function(xhr, status, error) {
+      console.error('Error inserting data:', error);
+    }
+  });
 }
+
 const addCards = (items) => {
   items.forEach(item => {
     let itemToAppend = '<div class="col s4 center-align">' +
